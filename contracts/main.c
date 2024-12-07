@@ -52,6 +52,11 @@ ArbResult get_value(uint8_t *input, size_t len)
   return _return_success_bebi32(buf_out);
 }
 
+ArbResult hello_world(uint8_t *input, size_t len)
+{
+  return _return_short_string(Success, "Hello, World!");
+}
+
 int handler(size_t argc)
 {
   // Save the function calldata
@@ -62,6 +67,7 @@ int handler(size_t argc)
   FunctionRegistry registry[] = {
       {to_function_selector("set_value(uint256)"), set_value},
       {to_function_selector("get_value()"), get_value},
+      {to_function_selector("hello_world()"), hello_world}
       // Add more functions as needed here
   };
 

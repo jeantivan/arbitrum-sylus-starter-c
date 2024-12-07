@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs"
-import { useRkAccountModal } from "@/lib/rainbowkit"
-import { useAccount } from "wagmi"
+import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
+import { useRkAccountModal } from "@/lib/rainbowkit";
+import { useAccount } from "wagmi";
 
 export default function Container() {
-  const { openAccountModal } = useRkAccountModal()
-  const { isConnected } = useAccount()
+  const { openAccountModal } = useRkAccountModal();
+  const { isConnected } = useAccount();
 
   return (
     <section className="max-w-2xl mt-12 mx-auto">
@@ -20,7 +20,7 @@ export default function Container() {
               if (!isConnected) {
                 // Abrimos el modal de conectar wallet
                 // si no está conectado
-                openAccountModal?.()
+                openAccountModal?.();
               }
             }}
             className="h-full"
@@ -32,7 +32,7 @@ export default function Container() {
         <TabsContent value="feed">
           <div className="grid grid-cols-3 gap-3">
             {Array.from({ length: 9 }).map((_, i) => (
-              <section className="p-4 border rounded-lg">
+              <section key={Date.now() * i} className="p-4 border rounded-lg">
                 <nav className="flex items-center gap-1">
                   <strong>0x03242</strong>
                   <span className="opacity-70">posted</span>
@@ -48,5 +48,5 @@ export default function Container() {
         <TabsContent value="personal">My publications</TabsContent>
       </Tabs>
     </section>
-  )
+  );
 }
